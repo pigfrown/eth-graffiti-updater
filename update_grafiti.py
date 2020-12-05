@@ -29,7 +29,10 @@
 # Probably more.
 # ~~ TODO
 # Check encoding
+# Don't hardcode systemctl path
+# Better subprocess/systemctl restart error checking
 # tests, derp
+# Fix length checks
 
 import select
 import systemd.journal
@@ -61,7 +64,7 @@ class Graffiti():
                                             loop=True)
 
     #This is for prysm. Change this to make the script (maybe) work on other clients
-    if search_for = None:
+    if search_for is None:
         self.search_for = "Submitted new block"
     else:
         self.search_for = search_for
@@ -78,8 +81,9 @@ class Graffiti():
     self.poll.register(self.journal, self.journal.get_events())
 
   def start(self):
-    #Set the graffiti file to the first line requested
+    #Set the graffiti file to the first line requested and restart the service so it's used
     self.graffiti_updater.update()
+    self.service.restart()
     self._setup_journal()
     while self.poll.poll():
       if self.journal.process() != systemd.journal.APPEND:
@@ -102,11 +106,13 @@ class ServiceRestarter():
   """
   def __init__(self, service_name):
     self.service_name = service_name
-    self.cmd = f"/usr/bin/systemd restart {self.service_name})"
+    #TODO find out systemd path 
+    self.cmd = f"/usr/bin/systemctl restart {self.service_name}"
 
   def restart(self):
     print(f"Restarting {self.service_name}")
-    done = subprocess.run(cmd, shell=True)
+    print(self.cmd)
+    done = subprocess.run(self.cmd, shell=True)
     #TODO check it actually worked derp
 
 class GraffitiUpdater():
