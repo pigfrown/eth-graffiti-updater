@@ -6,12 +6,11 @@ Until prysm adds the ability to update the graffiti tag, this script can be used
 
 To work with other clients search in validator logs and find a string that is printed _only_ when a block is found, and launch with the --search-for option set to that string.
 
-## Assumptions:
-1) prysm validator is running as a systemd service.
-2) prysm validator systemd service reads from (by default) /tmp/graffiti to populate the contents of the --graffiti field (see example service)
+Requires that the validator is running as a systemd service!
 
 ## How it works
-Read in a list of graffiti lines we want to add, in order, to the blockchain.
+
+Read in a file containing the of graffiti lines we want to add, in order, to the blockchain.
 
 Each line must be equal to or less than 32 bytes
 
