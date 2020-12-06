@@ -184,6 +184,12 @@ if __name__ == "__main__":
                       help="The line index to start from",
                       required=False,
                       default=0)
+  parser.add_argument("--search_for",
+                      dest="search_for",
+                      type=str,
+                      help="The string that is used to detect if a block has been proposed",
+                      required=False,
+                      default="Submitted new block") #works with prysm
   parser.add_argument('--loop',
                       action="store_true",
                       help="If set, loop over the input lines")
@@ -197,12 +203,13 @@ if __name__ == "__main__":
   print(f"Input     : {args.input}")
   print(f"Start Line: {args.line_index}")
   print(f"Looping   : {args.loop}")
-  import sys
-  sys.exit()
+  print(f"Search For: {args.search_for}")
 
   updater = Graffiti(args.service,
                      args.output,
                      args.input,
-                     args.line_index,
-                     args.loop)
+                     line_index=args.line_index,
+                     loop=args.loop,
+                     search_for=args.search_for)
+
   updater.start()
