@@ -29,7 +29,7 @@ For basic usage:
 Modify your existing or create a new systemd service.
 This service should read the contents of (by default) /tmp/graffiti into the GRAFFITI environment variable, and then use this variable to populate the value of the --graffiti field.
 Example service file has been included in the repo, but will need adjusting to work with your setup (paths etc). 
-Make sure validator is launched with ```bash -c```
+Make sure service launches the validator launched with ```bash -c```
 
 Create a text file which contains your required graffiti lines, in order.. In this example we'll call this file "mygraffiti"
 
