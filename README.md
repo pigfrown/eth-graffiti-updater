@@ -2,9 +2,9 @@
 
 Automatically updates graffiti when a block is found.
 
-Designed and tested for use with Prysm. Will probably work with other clients but will need modifying slightly (search_for variable will need updating)
-
 Until prysm adds the ability to update the graffiti tag, this script can be used to change graffiti everytime a block is found. It can (maybe) be used with other clients.
+
+To work with other clients search in validator logs and find a string that is printed _only_ when a block is found, and launch with the --search-for option set to that string.
 
 ## Assumptions:
 1) prysm validator is running as a systemd service.
