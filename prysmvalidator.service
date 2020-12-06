@@ -8,7 +8,7 @@ Group=prysmvalidator
 Type=simple
 Restart=always
 RestartSec=5
-Environment="GRAFFITI=$(cat /tmp/prysmgraffiti)"
+Environment="GRAFFITI=$(cat /tmp/graffiti)"
 ExecStart=/bin/bash -c '/usr/local/bin/validator --web --datadir /opt/prysm/validator/mainnet --wallet-dir /opt/prysm/validator/mainnet --wallet-password-file /opt/prysm/validator/mainnet/password.txt --graffiti "${GRAFFITI}"'
 [Install]
 WantedBy=multi-user.target
