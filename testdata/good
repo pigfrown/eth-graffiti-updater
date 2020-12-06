@@ -1,0 +1,7 @@
+thisoneisexactly32byteslongokoko
+this is a line
+--web is also a line
+make sure " and ' work
+also $(echo shouldn't echo)
+" " ' ' test
+hope your test passes :)
