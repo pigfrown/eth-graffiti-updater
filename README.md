@@ -1,4 +1,4 @@
-# eth-grafiti-updater
+# eth-graffiti-updater
 
 Automatically updates graffiti when a block is found.
 
