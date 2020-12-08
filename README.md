@@ -1,8 +1,11 @@
 # eth-graffiti-updater
 
-Automatically updates graffiti when a block is found.
+Automatically updates graffiti when a block is found, allowing multiple line graffiti to be added to the chain without manually changing any configs.
 
-Until prysm adds the ability to update the graffiti tag, this script can be used to change graffiti everytime a block is found. It can (maybe) be used with other clients.
+~Until prysm adds the ability to update the graffiti tag, this script can be used to change graffiti everytime a block is found.~
+Prysm has added a graffiti from file function but it doesn't (yet) allow multiple lines of graffiti to be added to the chain without manual intervention.
+
+It can (maybe) be used with other clients.
 
 To work with other clients search in validator logs and find a string that is printed _only_ when a block is found, and launch with the --search-for option set to that string.
 
