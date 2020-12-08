@@ -124,14 +124,21 @@ class GraffitiUpdater():
     if self.line_index > self.lines_len:
       raise Exception("Requested to start at line {line_index} but only given {lines_len} lines")
 
+  def get_line(self):
+      return self.input_lines[self.line_index%self.lines_len]
+
   def update(self):
     if (self.line_index >= self.lines_len) and not self.loop:
       print("Reached the end of the lines and no loop requested. Not updating")
       return
 
+
     with open(self.graffiti_path, 'w') as f:
-      f.write(self.input_lines[self.line_index%self.lines_len])
+      line = self.get_line()
+      print(f"Writing line: {line}")
+      f.write(line)
     self.line_index += 1
+    print(f"Next grafiti line will be : {self.line_index}, {self.get_line()}")
 
 class GraffitiReader():
   """
