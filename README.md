@@ -1,17 +1,16 @@
-# eth-grafiti-updater
+# eth-graffiti-updater
 
 Automatically updates graffiti when a block is found.
 
-Designed and tested for use with Prysm. Will probably work with other clients but will need modifying slightly (search_for variable will need updating)
-
 Until prysm adds the ability to update the graffiti tag, this script can be used to change graffiti everytime a block is found. It can (maybe) be used with other clients.
 
-## Assumptions:
-1) prysm validator is running as a systemd service.
-2) prysm validator systemd service reads from (by default) /tmp/graffiti to populate the contents of the --graffiti field (see example service)
+To work with other clients search in validator logs and find a string that is printed _only_ when a block is found, and launch with the --search-for option set to that string.
+
+Requires that the validator is running as a systemd service!
 
 ## How it works
-Read in a list of graffiti lines we want to add, in order, to the blockchain.
+
+Read in a file containing the of graffiti lines we want to add, in order, to the blockchain.
 
 Each line must be equal to or less than 32 bytes
 
@@ -30,7 +29,7 @@ For basic usage:
 Modify your existing or create a new systemd service.
 This service should read the contents of (by default) /tmp/graffiti into the GRAFFITI environment variable, and then use this variable to populate the value of the --graffiti field.
 Example service file has been included in the repo, but will need adjusting to work with your setup (paths etc). 
-Make sure validator is launched with ```bash -c```
+Make sure service launches the validator launched with ```bash -c```
 
 Create a text file which contains your required graffiti lines, in order.. In this example we'll call this file "mygraffiti"
 
