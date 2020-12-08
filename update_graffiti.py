@@ -69,7 +69,7 @@ class Graffiti():
     #Thanks stackoverflow :)
     self.journal = systemd.journal.Reader()
     self.journal.log_level(systemd.journal.LOG_INFO)
-    self.journal.add_match(_SYSTEMD_UNIT=self.service)
+    self.journal.add_match(_SYSTEMD_UNIT=self.service_name)
     self.journal.seek_tail()
     self.journal.get_previous()
 
