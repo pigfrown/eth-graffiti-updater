@@ -56,7 +56,7 @@ class Graffiti():
     self.graffiti_reader = GraffitiReader(graffiti_input)
     self.graffiti_updater = GraffitiUpdater(self.graffiti_reader,
                                             update_path,
-                                            line_index=0,
+                                            line_index=line_index,
                                             loop=True)
 
     #This is for prysm. Change this to make the script (maybe) work on other clients
